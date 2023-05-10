@@ -1,4 +1,4 @@
-package tezos
+package tezos_micheline
 
 import (
 	"math/big"
@@ -43,8 +43,8 @@ func Prim(data interface{}) micheline.Prim {
 				p = &p1
 			} else {
 				p2 := micheline.NewPair(
-					*p,
 					Prim(value),
+					*p,
 				)
 				p = &p2
 			}

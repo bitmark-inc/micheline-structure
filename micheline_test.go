@@ -1,4 +1,4 @@
-package tezos
+package tezos_micheline
 
 import (
 	"testing"
@@ -46,5 +46,5 @@ func TestConvertStruct(t *testing.T) {
 	})
 	b, _ := a.MarshalJSON()
 
-	assert.EqualValues(t, "{\"prim\":\"Pair\",\"args\":[{\"prim\":\"Pair\",\"args\":[{\"bytes\":\"697066733a2f2f516d6378787878787878636964\"},{\"int\":\"1\"}]},{\"string\":\"hello\"}]}", string(b))
+	assert.EqualValues(t, "{\"prim\":\"Pair\",\"args\":[{\"string\":\"hello\"},{\"prim\":\"Pair\",\"args\":[{\"int\":\"1\"},{\"bytes\":\"697066733a2f2f516d6378787878787878636964\"}]}]}", string(b))
 }
