@@ -69,3 +69,18 @@ func TestPackPublicKey(t *testing.T) {
 
 	assert.EqualValues(t, "{\"bytes\":\"00c46564ac5e8c01cf48f0f769b59f21105512c14d417aaf192011ce376d6299f6\"}", string(b))
 }
+
+func TestPackStruct(t *testing.T) {
+	a := PackedPrim(struct {
+		Address  string
+		Counter  int64
+		TokenURI []byte
+	}{
+		Address:  "tz1hQbuRax3op9knY3YDxqNnqxzcmoxmv1qa",
+		Counter:  1,
+		TokenURI: []byte("ipfs://Qmcxxxxxxxcid"),
+	})
+	b, _ := a.MarshalJSON()
+
+	assert.EqualValues(t, "{\"prim\":\"Pair\",\"args\":[{\"bytes\":\"0000eec8aafb412df59734945ca265c5d16273b0967a\"},{\"prim\":\"Pair\",\"args\":[{\"int\":\"1\"},{\"bytes\":\"697066733a2f2f516d6378787878787878636964\"}]}]}", string(b))
+}
