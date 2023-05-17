@@ -61,7 +61,7 @@ func Prim(data interface{}) micheline.Prim {
 }
 
 func PackedPrim(data interface{}) micheline.Prim {
-	return Pack(Prim(data))
+	return PackAll(Prim(data))
 }
 
 func PackAll(p micheline.Prim) micheline.Prim {
